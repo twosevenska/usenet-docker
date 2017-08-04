@@ -13,15 +13,15 @@ services:
         image: linuxserver/sabnzbd:latest
         container_name: sabnzbd
         volumes:
-            - /data_directory_path/config/sabnzbd:/config
-            - /data_directory_path/Downloads/complete:/downloads
-            - /data_directory_path/Downloads/incomplete:/incomplete-downloads
+            - ${DATA}/config/sabnzbd:/config
+            - ${DATA}/Downloads/complete:/downloads
+            - ${DATA}/Downloads/incomplete:/incomplete-downloads
         ports:
             - 8080:8080
         env_file: uidgid.env
         environment:
             - EDGE=1
-            - VIRTUAL_HOST=sabnzbd.HOSTNAME.com
+            - VIRTUAL_HOST=sabnzbd.${HOSTNAME}
             - VIRTUAL_PORT=8080
         restart: always
 
@@ -29,14 +29,14 @@ services:
         image: linuxserver/couchpotato:latest
         container_name: couchpotato
         volumes:
-            - /data_directory_path/config/couchpotato:/config
-            - /data_directory_path/Downloads/complete:/downloads
-            - /data_directory_path/Movies:/movies
+            - ${DATA}/config/couchpotato:/config
+            - ${DATA}/Downloads/complete:/downloads
+            - ${DATA}/Movies:/movies
         ports:
             - 5050:5050
         env_file: uidgid.env
         environment:
-            - VIRTUAL_HOST=couchpotato.HOSTNAME.com
+            - VIRTUAL_HOST=couchpotato.${HOSTNAME}
             - VIRTUAL_PORT=5050
         restart: always
 
@@ -44,9 +44,9 @@ services:
         image: linuxserver/plex
         container_name: plex
         volumes:
-            - /data_directory_path/config/plex:/config
-            - /data_directory_path/TV:/data/tvshows
-            - /data_directory_path/Movies:/data/movies
+            - ${DATA}/config/plex:/config
+            - ${DATA}/TV:/data/tvshows
+            - ${DATA}/Movies:/data/movies
         ports:
             - 32469:32469
             - 32400:32400
@@ -60,7 +60,7 @@ services:
             - 32414:32414/udp
         env_file: uidgid.env
         environment:
-            - VIRTUAL_HOST=plex.HOSTNAME.com
+            - VIRTUAL_HOST=plex.${HOSTNAME}
             - VIRTUAL_PORT=32400
         restart: always
 
@@ -68,15 +68,15 @@ services:
         image: linuxserver/sonarr
         container_name: sonarr
         volumes:
-            - /data_directory_path/config/sonarr:/config
+            - ${DATA}/config/sonarr:/config
             - /etc/localtime:/etc/localtime:ro
-            - /data_directory_path/TV:/tv
-            - /data_directory_path/Downloads/complete:/downloads
+            - ${DATA}/TV:/tv
+            - ${DATA}/Downloads/complete:/downloads
         ports:
             - 8989:8989
         env_file: uidgid.env
         environment:
-            - VIRTUAL_HOST=sonarr.HOSTNAME.com
+            - VIRTUAL_HOST=sonarr.${HOSTNAME}
             - VIRTUAL_PORT=8989
         restart: always
 
@@ -84,23 +84,23 @@ services:
         image: linuxserver/muximux
         container_name: muximux
         volumes:
-            - /data_directory_path/config/muximux:/config
+            - ${DATA}/config/muximux:/config
             - /etc/localtime:/etc/localtime:ro
         env_file: uidgid.env
         environment:
-            - VIRTUAL_HOST=muximux.HOSTNAME.com
+            - VIRTUAL_HOST=muximux.${HOSTNAME}
         restart: always
 
     ombi:
         image: linuxserver/ombi
         container_name: ombi
         volumes:
-            - /data_directory_path/config/ombi:/config
+            - ${DATA}/config/ombi:/config
             - /etc/localtime:/etc/localtime:ro
         ports:
             - 3579:3579
         env_file: uidgid.env
         environment:
-            - VIRTUAL_HOST=ombi.HOSTNAME.com
+            - VIRTUAL_HOST=ombi.${HOSTNAME}
             - VIRTUAL_PORT=3579
         restart: always
