@@ -80,36 +80,6 @@ services:
             - VIRTUAL_PORT=8989
         restart: always
 
-    plexpy:
-        image: linuxserver/plexpy
-        container_name: plexpy
-        volumes:
-            - /data_directory_path/config/plexpy:/config
-            - /etc/localtime:/etc/localtime:ro
-            - /data_directory_path/config/plex/Library/Application Support/Plex Media Server/Logs:/logs:ro
-        ports:
-            - 8181:8181
-        env_file: uidgid.env
-        environment:
-            - VIRTUAL_HOST=plexpy.HOSTNAME.com
-            - VIRTUAL_PORT=8181
-        restart: always
-
-    nzbhydra:
-        image: linuxserver/hydra
-        container_name: nzbhydra
-        volumes:
-            - /data_directory_path/config/nzbhydra:/config
-            - /data_directory_path/Downloads:/downloads
-            - /etc/localtime:/etc/localtime:ro
-        ports:
-            - 5075:5075
-        env_file: uidgid.env
-        environment:
-            - VIRTUAL_HOST=nzbhydra.HOSTNAME.com
-            - VIRTUAL_PORT=5075
-        restart: always
-
     muximux:
         image: linuxserver/muximux
         container_name: muximux
@@ -119,22 +89,6 @@ services:
         env_file: uidgid.env
         environment:
             - VIRTUAL_HOST=muximux.HOSTNAME.com
-        restart: always
-
-    radarr:
-        image: linuxserver/radarr
-        container_name: radarr
-        volumes:
-            - /data_directory_path/config/radarr:/config
-            - /data_directory_path/Movies:/movies
-            - /data_directory_path/Downloads/complete:/downloads
-            - /etc/localtime:/etc/localtime:ro
-        ports:
-            - 7878:7878
-        env_file: uidgid.env
-        environment:
-            - VIRTUAL_HOST=radarr.HOSTNAME.com
-            - VIRTUAL_PORT=7878
         restart: always
 
     ombi:
@@ -149,19 +103,4 @@ services:
         environment:
             - VIRTUAL_HOST=ombi.HOSTNAME.com
             - VIRTUAL_PORT=3579
-        restart: always
-
-    nzbget:
-        image: linuxserver/nzbget
-        container_name: nzbget
-        volumes:
-            - /data_directory_path/config/nzbget:/config
-            - /data_directory_path/Downloads/complete:/complete
-            - /data_directory_path/Downloads:/downloads
-        ports:
-            - 6789:6789
-        env_file: uidgid.env
-        environment:
-            - VIRTUAL_HOST=nzbget.HOSTNAME.com
-            - VIRTUAL_PORT=6789
         restart: always
