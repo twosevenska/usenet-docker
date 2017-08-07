@@ -48,6 +48,7 @@ services:
             - ${DATA}/appdata/plex/transcodes
             - ${DATA}/TV:/data/tvshows
             - ${DATA}/Movies:/data/movies
+            - ${DATA}/Anime:/data/anime
         ports:
             - 32469:32469
             - 32400:32400/tcp
