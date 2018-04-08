@@ -9,7 +9,6 @@ This repo is my version of another fork. Setup should be a bit easier but even t
 * [plexinc/pms-docker](https://github.com/plexinc/pms-docker) - Plex
 * [linuxserver/sonarr](https://github.com/linuxserver/docker-sonarr) - Sonarr
 * [linuxserver/muximux](https://github.com/linuxserver/docker-muximux) - Muximux
-* [linuxserver/ombi](https://github.com/linuxserver/docker-ombi) - Ombi
 
 ## Docker Setup
 1. Update `./uidgid.env` with the user and group IDs that will be running Docker

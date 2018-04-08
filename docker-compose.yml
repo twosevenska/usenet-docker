@@ -76,6 +76,7 @@ services:
             - ${DATA}/config/sonarr:/config
             - /etc/localtime:/etc/localtime:ro
             - ${DATA}/TV:/tv
+            - ${DATA}/Anime:/anime
             - ${DATA}/Downloads/complete:/downloads
         ports:
             - 8989:8989
@@ -96,16 +97,29 @@ services:
             - VIRTUAL_HOST=muximux.${HOSTNAME}
         restart: always
 
-    ombi:
-        image: linuxserver/ombi
-        container_name: ombi
-        volumes:
-            - ${DATA}/config/ombi:/config
-            - /etc/localtime:/etc/localtime:ro
-        ports:
-            - 3579:3579
-        env_file: uidgid.env
-        environment:
-            - VIRTUAL_HOST=ombi.${HOSTNAME}
-            - VIRTUAL_PORT=3579
-        restart: always
+#    nextcloud:
+#        image: linuxserver/nextcloud
+#        container_name: nextcloud
+#        volumes:
+#            - ${DATA}/config/nextcloud:/config
+#            - ${DATA}/fileServer/data:/data
+#            - /etc/localtime:/etc/localtime:ro
+#        ports:
+#            - 443:443
+#        env_file: uidgid.env
+#        environment:
+#            - VIRTUAL_HOST=wurzcloud.${HOSTNAME}
+#            - VIRTUAL_PORT=443
+#        restart: always
+#
+#    mariadb:
+#        image: linuxserver/mariadb
+#        container_name: mariadb
+#        volumes:
+#            - ${DATA}/config/mariadb:/config
+#            - /etc/localtime:/etc/localtime:ro
+#        ports:
+#            - 3306:3306
+#        env_file: uidgid.env
+#        restart: always
+#
