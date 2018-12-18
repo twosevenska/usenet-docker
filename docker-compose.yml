@@ -7,6 +7,7 @@ services:
             - /var/run/docker.sock:/tmp/docker.sock:ro
         ports:
             - 80:80
+        mem_limit: 128m
         restart: always
 
     sabnzbd:
@@ -23,6 +24,7 @@ services:
             - EDGE=1
             - VIRTUAL_HOST=sabnzbd.${HOSTNAME}
             - VIRTUAL_PORT=8080
+        mem_limit: 2gb
         restart: always
 
     couchpotato:
@@ -98,6 +100,7 @@ services:
         env_file: uidgid.env
         environment:
             - VIRTUAL_HOST=muximux.${HOSTNAME}
+        mem_limit: 128m
         restart: always
 
 #    nextcloud:
