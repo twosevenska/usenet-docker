@@ -1,0 +1,9 @@
+version: '2'
+services:
+    jmusicbot:
+        image: jmusicbot
+        container_name: jmusicbot
+        volumes:
+            - ${DATA}/config/jmusicbot/config.txt:/bot/config.txt
+        mem_limit: 1gb
+        restart: always

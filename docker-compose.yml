@@ -38,6 +38,7 @@ services:
         environment:
             - VIRTUAL_HOST=couchpotato.${HOSTNAME}
             - VIRTUAL_PORT=5050
+        mem_limit: 1gb
         restart: always
     
     plex:
@@ -67,6 +68,7 @@ services:
             - VIRTUAL_PORT=32400
             - ADVERTISE_IP=http://plex.${HOSTNAME}/
         hostname: PlexServer
+        mem_limit: 8gb
         restart: always
 
     sonarr:
@@ -84,6 +86,7 @@ services:
         environment:
             - VIRTUAL_HOST=sonarr.${HOSTNAME}
             - VIRTUAL_PORT=8989
+        mem_limit: 1gb
         restart: always
 
     muximux:
@@ -95,13 +98,6 @@ services:
         env_file: uidgid.env
         environment:
             - VIRTUAL_HOST=muximux.${HOSTNAME}
-        restart: always
-
-    jmusicbot:
-        image: jmusicbot
-        container_name: jmusicbot
-        volumes:
-            - ${DATA}/config/jmusicbot/config.txt:/bot/config.txt
         restart: always
 
 #    nextcloud:
