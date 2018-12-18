@@ -2,6 +2,10 @@
 
 This repo is my version of another fork. Setup should be a bit easier but even the original was pretty straightforward.
 
+## ! NOTICE !
+
+THIS FORK HAS BEEN ARCHIVED AND DUPLICATED SINCE IT WAS BECOMING ITS OWN THING AND NOT EXCLUSIVE FOR USENET
+
 ## Containers
 * [jwilder/nginx-proxy](https://github.com/jwilder/nginx-proxy) - Nginx Proxy
 * [linuxserver/sabnzbd](https://github.com/linuxserver/docker-sabnzbd) - SABnzbd
